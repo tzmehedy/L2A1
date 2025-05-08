@@ -67,3 +67,34 @@ const products = [
 
 const result6 = getMostExpensiveProduct(products)
 console.log(result6)
+
+enum Day {
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+  Sunday,
+}
+
+function getDayType(day: Day){
+  if(day === Day.Saturday || day === Day.Sunday) return "Weekend"
+  else return "Weekday"
+}
+
+const result7 = getDayType(Day.Tuesday)
+console.log(result7)
+
+async function squareAsync(n: number): Promise<number>{
+  return new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+      if (n >= 0) resolve(n * n);
+      else reject(new Error("Negative number not allowed"));
+    },1000)
+  })
+}
+
+squareAsync(-3)
+.then(res=>console.log(res))
+.catch(error=>console.log(error.message))
