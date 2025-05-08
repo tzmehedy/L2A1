@@ -4,8 +4,7 @@ function formatString(input:string, toUpper?:boolean):string{
     else return input.toLowerCase()
 }
 
-const result1 = formatString("Hello", false);
-console.log(result1)
+
 
 function filterByRating(
   items: { title: string; rating: number }[]
@@ -13,21 +12,43 @@ function filterByRating(
 
     return items.filter((e) => e.rating >= 4);
 }
-const books = [
-  { title: "Book A", rating: 4.5 },
-  { title: "Book B", rating: 3.2 },
-  { title: "Book C", rating: 5.0 },
-];
 
-const result2 = filterByRating(books)
-console.log(result2)
+
 
 function concatenateArrays<T>(...arrays: T[][]): T[]{
   return arrays.flat()
 }
 
-const result3 = concatenateArrays([1, 2], [3, 4], [5]);
-console.log(result3)
+
+
+class Vehicle {
+  private make: string;
+  private year: number;
+
+  constructor(make: string, year: number) {
+    this.make = make;
+    this.year = year;
+  }
+
+  public getInfo(): string {
+    return `"Make: ${this.make}, Year: (${this.year})`;
+  }
+}
+class Car extends Vehicle {
+  private model: string;
+
+  constructor(make: string, year: number, model: string) {
+    super(make, year);
+    this.model = model;
+  }
+
+  public getModel(): string {
+    return `"Model : ${this.model}"`;
+  }
+}
+
+
+
 
 
 function processValue(value: string | number): number {
@@ -40,8 +61,9 @@ function processValue(value: string | number): number {
   }
 }
 
-const result5 = processValue(10);
-console.log(result5)
+
+
+
 
 interface Product {
   name: string;
@@ -59,14 +81,8 @@ function getMostExpensiveProduct(products: Product[]): Product | null{
   return highestPrice
 }
 
-const products = [
-  { name: "Pen", price: 10 },
-  { name: "Notebook", price: 25 },
-  { name: "Bag", price: 50 }
-];
 
-const result6 = getMostExpensiveProduct(products)
-console.log(result6)
+
 
 enum Day {
   Monday,
@@ -83,8 +99,9 @@ function getDayType(day: Day){
   else return "Weekday"
 }
 
-const result7 = getDayType(Day.Tuesday)
-console.log(result7)
+
+
+
 
 async function squareAsync(n: number): Promise<number>{
   return new Promise((resolve,reject)=>{
@@ -94,7 +111,3 @@ async function squareAsync(n: number): Promise<number>{
     },1000)
   })
 }
-
-squareAsync(-3)
-.then(res=>console.log(res))
-.catch(error=>console.log(error.message))
